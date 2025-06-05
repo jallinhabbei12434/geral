@@ -243,7 +243,7 @@ await redis.set(`instancia:${instanciaId}`, 'livre');
 app.post('/resend-code', async (req, res) => {
   const { numero } = req.body;
   const storageFile = path.resolve(__dirname, 'sessions', `${numero}.json`);
-  const instanciaId = await redis.get(`instancia:${numero}`); // ou leadinst:${numero} se ainda usar
+  const instanciaId = await redis.get(`leadinst:${numero}`);
 if (!instanciaId) return res.status(400).json({ erro: 'Instância não encontrada' });
 
 
