@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlyFlix - Cadastre-se e Ganhe Acesso Premium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="OnlyFlix" class="logo-img">
+        </div>
+        <div class="auth-buttons">
+            <button class="btn-login" id="loginBtn">JÁ TENHO CONTA</button>
+            <button class="btn-register" id="registerBtn">CADASTRAR GRÁTIS</button>
+        </div>
+    </header>
+
+    <!-- Banner de promoção -->
+    <div class="promo-banner">
+        <p>🔥 CADASTRO GRÁTIS! Ganhe 30 dias premium sem pagar nada 🔥</p>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>ACESSO <span class="highlight">PREMIUM GRÁTIS</span></h1>
+                <p class="hero-subtitle">Cadastre-se agora e ganhe 30 dias de acesso completo à plataforma mais exclusiva de conteúdo adulto</p>
+                
+                <div class="hero-cta">
+                    <button class="cta-button" id="heroRegisterBtn">
+                        <span class="cta-icon"><i class="fas fa-user-plus"></i></span>
+                        <span class="cta-text">CADASTRAR GRÁTIS</span>
+                    </button>
+                    <p class="cta-note">30 dias grátis - Sem cartão de crédito</p>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-image.jpg" alt="OnlyFlix Platform">
+            </div>
+        </section>
+
+        <!-- Categorias de Conteúdo -->
+        <section class="categories-section">
+            <h2 class="section-title">CATEGORIAS <span class="highlight">EXCLUSIVAS</span></h2>
+            
+            <div class="categories-grid">
+                <div class="category-card" id="categoryPremium">
+                    <div class="category-image">
+                        <img src="images/category-premium.jpg" alt="Premium Content">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3 class="category-title">Premium</h3>
+                                <p>Conteúdo exclusivo de alta qualidade</p>
+                                <span class="content-count">2.5k+ vídeos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card" id="categoryLive">
+                    <div class="category-image">
+                        <img src="images/category-live.jpg" alt="Live Content">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3 class="category-title">Ao Vivo</h3>
+                                <p>Transmissões exclusivas em tempo real</p>
+                                <span class="content-count">150+ canais</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card" id="categoryExclusive">
+                    <div class="category-image">
+                        <img src="images/category-exclusive.jpg" alt="Exclusive Content">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3 class="category-title">Exclusivos</h3>
+                                <p>Conteúdo que você não encontra em outro lugar</p>
+                                <span class="content-count">800+ vídeos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card" id="categoryNew">
+                    <div class="category-image">
+                        <img src="images/category-new.jpg" alt="New Content">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3 class="category-title">Novidades</h3>
+                                <p>Últimos lançamentos da plataforma</p>
+                                <span class="content-count">Atualizado diariamente</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefícios -->
+        <section class="benefits-section">
+            <h2 class="section-title">POR QUE SE <span class="highlight">CADASTRAR</span>?</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>30 Dias Premium</h3>
+                    <p>Acesso completo a todo conteúdo exclusivo por 1 mês inteiro</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>100% Privado</h3>
+                    <p>Seus dados protegidos com criptografia de ponta</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Conteúdo Exclusivo</h3>
+                    <p>Acesso a milhares de perfis premium não disponíveis em outros lugares</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Totalmente Grátis</h3>
+                    <p>Sem taxas ocultas, sem cartão de crédito, sem pegadinhas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section class="testimonials-section">
+            <h2 class="section-title">O QUE NOSSOS <span class="highlight">USUÁRIOS</span> DIZEM</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Finalmente uma plataforma que entende o que eu procuro. O cadastro foi super rápido e o acesso premium gratuito me conquistou completamente!"</p>
+                    <div class="testimonial-author">
+                        <span>Ricardo M.</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Privacidade total e conteúdo de qualidade superior. Me cadastrei ontem e já estou viciada na plataforma. Recomendo para todas as amigas!"</p>
+                    <div class="testimonial-author">
+                        <span>Amanda S.</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"Nunca pensei que encontraria uma plataforma tão completa e discreta. O período gratuito me deu tempo para explorar tudo sem pressa."</p>
+                    <div class="testimonial-author">
+                        <span>Carlos F.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Urgência -->
+        <section class="urgency-section">
+            <div class="urgency-banner">
+                <div class="urgency-content">
+                    <div class="urgency-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="urgency-text">
+                        <h3>⚡ OFERTA POR TEMPO LIMITADA ⚡</h3>
+                        <p>Apenas <strong>47 vagas</strong> restantes para cadastro gratuito hoje!</p>
+                        <div class="countdown" id="countdown">
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="hours">02</span>
+                                <span class="countdown-label">Horas</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="minutes">15</span>
+                                <span class="countdown-label">Min</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="seconds">30</span>
+                                <span class="countdown-label">Seg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="urgency-btn" id="urgencyRegisterBtn">GARANTIR MINHA VAGA</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">PERGUNTAS <span class="highlight">FREQUENTES</span></h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Como funciona o cadastro gratuito?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ao se cadastrar, você ganha automaticamente 30 dias de acesso premium gratuito a todo nosso conteúdo adulto exclusivo. Não é necessário fornecer cartão de crédito. Após o período, você pode optar por assinar ou continuar explorando nosso conteúdo gratuito limitado.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>A plataforma é segura e privada?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, o OnlyFlix foi desenvolvido com foco total em privacidade e discrição. Utilizamos criptografia de ponta a ponta, não armazenamos histórico de navegação e oferecemos navegação 100% anônima. Sua privacidade é nossa prioridade máxima.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Posso cancelar a qualquer momento?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutamente! Não há contratos ou compromissos. Você tem total liberdade para cancelar sua conta a qualquer momento, sem taxas ou cobranças adicionais. Sua satisfação e conforto são fundamentais para nós.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Que tipo de conteúdo vou encontrar?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nossa plataforma oferece uma vasta biblioteca de conteúdo adulto premium, incluindo vídeos exclusivos, transmissões ao vivo, conteúdo amador autêntico e produções profissionais de alta qualidade. Todo conteúdo é cuidadosamente selecionado para oferecer a melhor experiência possível.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta-section">
+            <div class="final-cta-content">
+                <h2>PRONTO PARA COMEÇAR?</h2>
+                <p>Cadastre-se agora e ganhe 30 dias de acesso premium totalmente grátis!</p>
+                <div class="final-cta-button-container">
+                    <button class="cta-button large" id="finalRegisterBtn">
+                        <span class="cta-icon"><i class="fas fa-user-plus"></i></span>
+                        <span class="cta-text">CADASTRAR GRÁTIS</span>
+                    </button>
+                </div>
+                <p class="final-cta-note">Sem cartão de crédito • Sem taxas ocultas • Cancele quando quiser</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="OnlyFlix" class="footer-logo-img">
+            </div>
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Suporte</a>
+                <a href="#">Contato</a>
+            </div>
+            <div class="footer-disclaimer">
+                <p>© 2023 OnlyFlix. Todos os direitos reservados.</p>
+                <p>Conteúdo exclusivo para maiores de 18 anos.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de cadastro -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Cadastre-se Grátis</h2>
+                <button class="close-btn" id="closeRegisterModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" class="register-form">
+                    <div class="form-group">
+                        <label for="fullName">Nome Completo</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Número de Telefone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            Aceito os <a href="#" class="terms-link">Termos de Uso</a> e <a href="#" class="terms-link">Política de Privacidade</a>
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="confirmAge" required>
+                            <span class="checkmark"></span>
+                            Confirmo que tenho mais de 18 anos
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-user-plus"></i>
+                        CRIAR CONTA GRÁTIS
+                    </button>
+                </form>
+                
+                <div class="login-link">
+                    <p>Já tem uma conta? <a href="#" id="showLoginBtn">Faça login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Fazer Login</h2>
+                <button class="close-btn" id="closeLoginModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" name="loginEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPhone">Número de Telefone</label>
+                        <input type="tel" id="loginPhone" name="loginPhone" placeholder="(11) 99999-9999" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        ENTRAR
+                    </button>
+                </form>
+                
+                <div class="register-link">
+                    <p>Não tem uma conta? <a href="#" id="showRegisterBtn">Cadastre-se grátis</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de verificação de idade -->
+    <div class="modal age-verification-modal" id="ageVerificationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Verificação de Idade</h2>
+            </div>
+            <div class="modal-body">
+                <p class="age-warning">Este conteúdo é destinado apenas para maiores de 18 anos.</p>
+                <p>Ao continuar, você confirma que tem pelo menos 18 anos de idade e concorda com nossos Termos de Uso e Política de Privacidade.</p>
+                
+                <div class="age-buttons">
+                    <button class="age-btn confirm" id="confirmAgeBtn">Confirmar (18+)</button>
+                    <button class="age-btn decline" id="declineAgeBtn">Sair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmação de número -->
+    <div class="modal" id="phoneConfirmModal">
+        <div class="modal-content phone-confirm-modal">
+            <div class="modal-header">
+                <div class="phone-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h2>Confirme seu Número</h2>
+                <p class="modal-subtitle">Verifique se o número está correto antes de continuar</p>
+            </div>
+            <div class="modal-body">
+                <div class="user-info-card">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h3 id="confirmUserName">Nome do Usuário</h3>
+                        <p id="confirmUserEmail">email@exemplo.com</p>
+                    </div>
+                </div>
+                
+                <div class="phone-confirm-section">
+                    <label for="confirmPhoneInput">Confirme seu número de telefone:</label>
+                    <div class="phone-input-group">
+                        <span class="country-code">+55</span>
+                        <input type="tel" id="confirmPhoneInput" class="phone-confirm-input" placeholder="(11) 99999-9999">
+                    </div>
+                    <p class="phone-note">
+                        <i class="fas fa-info-circle"></i>
+                        Digite o mesmo número usado no cadastro
+                    </p>
+                </div>
+                
+                <div class="confirm-buttons">
+                    <button type="button" class="btn-secondary" id="editPhoneBtn">
+                        <i class="fas fa-edit"></i>
+                        Alterar Número
+                    </button>
+                    <button type="button" class="btn-primary" id="confirmPhoneBtn">
+                        <i class="fas fa-check"></i>
+                        Confirmar e Continuar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

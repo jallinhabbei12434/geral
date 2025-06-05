@@ -1,0 +1,713 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "310c0cce-bd8e-43b1-b40e-850a9d8a1daa",
+              "name": "Quem mandou",
+              "value": "={{ $json.body.telefone.toString().replace(/\\D/g,'+55', '') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1940,
+        2200
+      ],
+      "id": "67c13d66-9a5e-4dd0-b35b-8937e7baeb0c",
+      "name": "Dados2"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"numero\": \"{{ $('status zapi').item.json.body.numero }}\",\n  \"disponibilidade\": \"{{ $('status zapi').item.json.body.disponibilidade }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.3,
+      "position": [
+        2920,
+        1440
+      ],
+      "id": "40bd0a14-5230-4555-a88d-d0316cf794f1",
+      "name": "Respond to Webhook8"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "zapi-status",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        1200
+      ],
+      "id": "0da2ce8d-8988-4492-9fdb-fcd6fa8f1b97",
+      "name": "status zapi",
+      "webhookId": "5397de3a-7b28-4314-adb8-50012c772423"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "coletar-numero",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        1960
+      ],
+      "id": "4e0b7118-15e8-41ac-8c3c-39f83d7b6cae",
+      "name": "coletar numero",
+      "webhookId": "5397de3a-7b28-4314-adb8-50012c772423"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('status zapi').item.json.body.numero }}",
+        "value": "={{ $('status zapi').item.json.body.disponibilidade }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2700,
+        1200
+      ],
+      "id": "5b63fce2-8251-45b0-b114-fc4e98e2709d",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "WWakzg5Rv480MYfd",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "310c0cce-bd8e-43b1-b40e-850a9d8a1daa",
+              "name": "Quem mandou",
+              "value": "={{ $('status zapi').item.json.body.numero.toString().replace(/\\D/g,'+55', '') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2520,
+        1440
+      ],
+      "id": "706aa9c4-e61a-4b38-8aa3-41fe06c1ba88",
+      "name": "Dados3"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"numero\": \"{{ $('Dados2').item.json['Quem mandou'] }}\",\n  \"disponibilidade\": \"{{ $json.status }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.3,
+      "position": [
+        2340,
+        2200
+      ],
+      "id": "6f12b062-bf9a-4e19-913f-df73f5cc6e8f",
+      "name": "Respond to Webhook9"
+    },
+    {
+      "parameters": {
+        "content": "## webhook site\n### coleta numero",
+        "height": 220,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        1880
+      ],
+      "id": "6e6a830d-12e1-4c55-b479-9a975729d03f",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## tratamento\n### num. telefone",
+        "height": 240,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        2100
+      ],
+      "id": "94890981-7c80-45ba-a7ba-e02f1f7b9cbd",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "### responde site com a disponibilidade   da z-api",
+        "height": 240,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2300,
+        2100
+      ],
+      "id": "f8605939-f015-42ad-b2b4-bd96923bf80d",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## webhook bot\n### coleta disp.",
+        "height": 240,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        1100
+      ],
+      "id": "dc0d89ab-930a-41e3-b639-1a5253f31c06",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "content": "## tratamento\n### num. telefone",
+        "height": 220,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        1340
+      ],
+      "id": "7e52ad59-ea8e-4a91-99f1-931911b30ffc",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "content": "## cadastro key\n### chave e disp.",
+        "height": 240,
+        "width": 170
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        1100
+      ],
+      "id": "e27fb414-1d3f-4a1e-8e5a-713389fe2873",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {
+        "content": "## prossegue \n## no site",
+        "height": 220,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        1340
+      ],
+      "id": "aa5de55e-fedc-4f99-a363-c1a984cae065",
+      "name": "Sticky Note14"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "por-codigo",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        3340,
+        1180
+      ],
+      "id": "8d1cb0d7-92db-4b4e-8ddb-f9aa52dd9ed0",
+      "name": "por código2",
+      "webhookId": "01a07de5-1b66-4373-8e53-96ef782d0b5e"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"validado\": \"{{ $json.success }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        3940,
+        1400
+      ],
+      "id": "cc5250c4-c9c5-46b3-b2b0-832f7f22cc3c",
+      "name": "Respond to Webhook6"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://main-bot.ohbhf7.easypanel.host/start-bot",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"numero\": \"{{ $('Dados2').item.json['Quem mandou'] }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2140,
+        1960
+      ],
+      "id": "902b40f6-5f0a-4779-83c3-934c6da08e1e",
+      "name": "HTTP Request11"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://main-bot.ohbhf7.easypanel.host/verify-code",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"numero\": \"{{ $json.numero }}\",\n  \"code\": \"{{ $('por código2').item.json.body.code }}\" \n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3740,
+        1180
+      ],
+      "id": "2a47bb6d-8338-4398-818c-5ffb1eaedf54",
+      "name": "HTTP Request12"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3f053d8-40c3-41b6-af37-1d8dcae830d5",
+              "name": "numero",
+              "value": "={{$json.body.numero.replace('+55', '')}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3540,
+        1400
+      ],
+      "id": "6afd88cc-9371-42a7-b768-411a4f25116d",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "content": "## inicia bot\n### bot-zapi.js",
+        "height": 220,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2100,
+        1880
+      ],
+      "id": "3d28158c-ff6e-4515-9d89-21184ba9d504",
+      "name": "Sticky Note17"
+    },
+    {
+      "parameters": {
+        "content": "## webhook site\n### coleta code",
+        "height": 240,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3300,
+        1080
+      ],
+      "id": "8256b4f2-cc65-4cd6-87dc-f855aeb3a3e6",
+      "name": "Sticky Note18"
+    },
+    {
+      "parameters": {
+        "content": "## tratamento\n### num. telefone",
+        "height": 220,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3500,
+        1320
+      ],
+      "id": "7952afd7-3a23-4d41-aa55-3cfbb6806b37",
+      "name": "Sticky Note19"
+    },
+    {
+      "parameters": {
+        "content": "## envia code\n### preenche code z-api",
+        "height": 240,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3700,
+        1080
+      ],
+      "id": "31d2cf13-3d71-41d9-8dc1-130cd314f704",
+      "name": "Sticky Note42"
+    },
+    {
+      "parameters": {
+        "content": "### responde site com código SMS aprovado ou não",
+        "height": 220,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        1320
+      ],
+      "id": "55390fac-ef45-473d-8b35-7319fdab6ed2",
+      "name": "Sticky Note43"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"validado\": \"{{ $json.success }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.2,
+      "position": [
+        3840,
+        2320
+      ],
+      "id": "7c3b4fb8-1f82-4e6b-907a-7cc8b1652cff",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://main-bot.ohbhf7.easypanel.host/resend-code",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"numero\": \"{{ $json.numero }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3640,
+        2100
+      ],
+      "id": "896dacd3-2317-4950-afc1-aa602a39a60a",
+      "name": "HTTP Request13"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3f053d8-40c3-41b6-af37-1d8dcae830d5",
+              "name": "numero",
+              "value": "={{$json.body.numero.replace('+55', '')}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3440,
+        2320
+      ],
+      "id": "066bbea2-d110-497f-8113-8425ca558dc8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "content": "## webhook site\n### coleta code",
+        "height": 240,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3200,
+        2000
+      ],
+      "id": "e0ef1544-6469-4e87-bbdd-d4add8417c42",
+      "name": "Sticky Note20"
+    },
+    {
+      "parameters": {
+        "content": "## tratamento\n### num. telefone",
+        "height": 220,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3400,
+        2240
+      ],
+      "id": "b0d46a93-2240-47b7-9fab-747deae87d3e",
+      "name": "Sticky Note21"
+    },
+    {
+      "parameters": {
+        "content": "## envia code\n### preenche code z-api",
+        "height": 240,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3600,
+        2000
+      ],
+      "id": "325969f3-154b-4f08-9213-865bb5447323",
+      "name": "Sticky Note44"
+    },
+    {
+      "parameters": {
+        "content": "### responde site com código SMS aprovado ou não",
+        "height": 220,
+        "width": 190
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3800,
+        2240
+      ],
+      "id": "bb5616fa-9400-4689-9d84-4fa7139d4455",
+      "name": "Sticky Note45"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "resend-code",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        3240,
+        2100
+      ],
+      "id": "5f97effd-6f4d-4ada-868c-7a6b499a95c5",
+      "name": "reenviar codigo",
+      "webhookId": "01a07de5-1b66-4373-8e53-96ef782d0b5e"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Dados2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "status zapi": {
+      "main": [
+        [
+          {
+            "node": "Dados3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "coletar numero": {
+      "main": [
+        [
+          {
+            "node": "Dados2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados3": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "por código2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request11": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request12": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request13": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "reenviar codigo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "978c515c-1d6c-4f85-893e-6bb77632f767",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0c41e87d898d23bba3795ecbc64a230a1ca01f444740b96a0215046704b0201e"
+  },
+  "id": "GQhvz2X4uXhE9Lzf",
+  "tags": []
+}

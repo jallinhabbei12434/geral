@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Telefone - OnlyFlix (MODO TESTE)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .test-mode-banner {
+            background: linear-gradient(135deg, #4b0082, #8a2be2);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner de modo teste -->
+    <div class="test-mode-banner">
+        🧪 MODO DE TESTE - Digite qualquer código de 6 dígitos para prosseguir 🧪
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="OnlyFlix" class="logo-img">
+        </div>
+    </header>
+
+    <!-- Banner de promoção -->
+    <div class="promo-banner">
+        <p>🔥 VERIFICAÇÃO RÁPIDA! Confirme seu telefone e ganhe acesso imediato 🔥</p>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <div class="verification-container">
+            <div class="verification-card">
+                <div class="verification-header">
+                    <div class="verification-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h1>Verificação de Telefone</h1>
+                    <p class="verification-subtitle">Para garantir a segurança da sua conta, precisamos verificar seu número de telefone.
+                    </p>
+                </div>
+
+                <div class="user-info-card">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name" id="userName">Carregando...</span>
+                        <span class="user-phone" id="userPhone">Carregando...</span>
+                    </div>
+                </div>
+
+                <!-- Exibir número do usuário -->
+                <div class="phone-display-section">
+                    <p class="phone-display-label">Código será enviado para:</p>
+                    <div class="phone-display-number" id="phoneDisplay">+55 (11) 99999-9999</div>
+                </div>
+
+                <!-- Formulário de verificação -->
+                <form id="verificationForm" class="verification-form">
+                    <div class="form-group">
+                        <label for="verificationCode">Digite o código de 6 dígitos:</label>
+                        <input 
+                            type="text" 
+                            id="verificationCode" 
+                            class="verification-code-input" 
+                            placeholder="000000"
+                            maxlength="6"
+                            required
+                        >
+                    </div>
+                    
+                    <button type="submit" class="verify-btn" id="verifyBtn">
+                        <i class="fas fa-check-circle"></i>
+                        CONFIRMAR CÓDIGO
+                    </button>
+                </form>
+
+                <!-- Botão reenviar código -->
+                <div class="resend-section">
+                    <p>Não recebeu o código?</p>
+                    <button class="resend-btn" id="resendBtn" disabled>
+                        <i class="fas fa-redo"></i>
+                        Reenviar em <span id="countdown">60</span>s
+                    </button>
+                </div>
+
+                <!-- Timer de expiração -->
+                <div class="expiration-section">
+                    <div class="expiration-timer">
+                        <i class="fas fa-clock"></i>
+                        <span>Tempo restante: <span id="expirationTime">2:00</span></span>
+                    </div>
+                    <div class="expiration-progress">
+                        <div class="expiration-progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="security-badges">
+                    <div class="security-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Dados protegidos</span>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Conexão segura</span>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Verificação rápida</span>
+                    </div>
+                </div>
+
+                <div class="back-section">
+                    <a href="index-teste.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Voltar
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Progress indicator -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">
+                    <div class="step-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="step-info">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Cadastro</span>
+                    </div>
+                </div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step active">
+                    <div class="step-circle">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="step-info">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Verificação</span>
+                    </div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <div class="step-circle">
+                        <i class="fas fa-unlock-alt"></i>
+                    </div>
+                    <div class="step-info">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Acesso</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="OnlyFlix" class="footer-logo-img">
+            </div>
+            <div class="footer-disclaimer">
+                <p>© 2023 OnlyFlix. Todos os direitos reservados.</p>
+                <p>Conteúdo exclusivo para maiores de 18 anos.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="verificacao-teste.js"></script>
+</body>
+</html>
