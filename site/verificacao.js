@@ -389,11 +389,19 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         )
 
+        let data = null
+        try {
+          data = await response.json()
+        } catch {
+          console.error("Resposta inválida:", await response.text())
+          showCustomAlert("Erro de conexão. Tente novamente.", "error")
+          resetVerifyBtn()
+          return
+        }
+
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`)
         }
-
-        const data = await response.json()
 
         if (data.validado === true) {
           setStorage("phoneVerified", "true")
