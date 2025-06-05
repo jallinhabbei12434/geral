@@ -389,11 +389,12 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         )
 
+        const raw = await response.text()
         let data = null
         try {
-          data = await response.json()
-        } catch {
-          console.error("Resposta inválida:", await response.text())
+          data = JSON.parse(raw)
+        } catch (err) {
+          console.error("Resposta inválida:", raw)
           showCustomAlert("Erro de conexão. Tente novamente.", "error")
           resetVerifyBtn()
           return
